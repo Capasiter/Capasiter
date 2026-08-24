@@ -33,6 +33,7 @@ A versioned infrastructure project built with Proxmox VE, Linux, OpenTofu, Ansib
 - **Containers:** K3s, Kubernetes, containerd, Traefik, Helm
 - **Observability:** Prometheus, Grafana, Alertmanager, Blackbox Exporter, PromQL
 - **Workflow:** Git, GitHub Actions, CI validation, release management, technical documentation
+- **AI operations:** Planning a human-supervised lab experiment using AI agents for log analysis, incident triage, and runbook assistance; infrastructure changes will remain human-reviewed and auditable
 
 ## Connect
 
