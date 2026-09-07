@@ -20,10 +20,11 @@ A versioned infrastructure project built with Proxmox VE, Linux, OpenTofu, Ansib
 - Validated a protected Kubernetes rolling update with **148 successful HTTP requests and zero observed failures**.
 - Deployed Prometheus, Grafana, Alertmanager, and Blackbox Exporter.
 - Captured controlled application-alert firing and recovery evidence.
+- Automated off-server etcd backups to Unraid NFS with SHA-256 verification, one retained baseline, three rolling backups, and a daily systemd schedule.
 - Published the completed [v0.6.0 observability release](https://github.com/Capasiter/homelab-portfolio/releases/tag/v0.6.0).
 - Confirmed the release through a [successful CI validation run](https://github.com/Capasiter/homelab-portfolio/actions/runs/32668970647).
 
-> **Lab scope:** The three K3s VMs share one Proxmox host. The project documents its lack of an external Kubernetes API load balancer, local-only etcd snapshots, pending restore exercise, and node-local monitoring storage.
+> **Lab scope:** The three K3s VMs share one Proxmox host. Off-server etcd snapshots are stored on Unraid NFS; recovery-token protection and a documented restore test remain pending. The Kubernetes API has no external load balancer, and monitoring storage remains node-local.
 
 ## Technical Focus
 
@@ -33,7 +34,6 @@ A versioned infrastructure project built with Proxmox VE, Linux, OpenTofu, Ansib
 - **Containers:** K3s, Kubernetes, containerd, Traefik, Helm
 - **Observability:** Prometheus, Grafana, Alertmanager, Blackbox Exporter, PromQL
 - **Workflow:** Git, GitHub Actions, CI validation, release management, technical documentation
-- **AI operations:** Planning a human-supervised lab experiment using AI agents for log analysis, incident triage, and runbook assistance; infrastructure changes will remain human-reviewed and auditable
 
 ## Connect
 
