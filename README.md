@@ -11,7 +11,7 @@ I'm an infrastructure-focused IT professional in Blaine, Minnesota, transitionin
 
 ## Featured project · Homelab Infrastructure Portfolio
 
-An isolated Kubernetes lab built with **Proxmox, OpenTofu, Ansible, K3s, and GitHub Actions**—with live monitoring, protected application rollouts, off-server backups, and a validated internal API VIP.
+An isolated Kubernetes lab built with **Proxmox, OpenTofu, Ansible, K3s, Argo CD, and GitHub Actions**—with live monitoring, protected application rollouts, off-server backups, GitOps drift detection, and a validated internal API VIP.
 
 [![Infrastructure Validation](https://github.com/Capasiter/homelab-portfolio/actions/workflows/infrastructure-validation.yml/badge.svg)](https://github.com/Capasiter/homelab-portfolio/actions/workflows/infrastructure-validation.yml)
 
@@ -20,15 +20,15 @@ An isolated Kubernetes lab built with **Proxmox, OpenTofu, Ansible, K3s, and Git
 | **3 K3s server VMs**<br>Control plane + embedded etcd | **Prometheus + Grafana**<br>Cluster metrics and application probing | **148 successful HTTP requests**<br>0 observed failures during a protected rollout |
 | **Repeatable infrastructure**<br>OpenTofu provisioning + Ansible configuration | **Off-server backups**<br>Checksum verification, protected token, daily scheduling | **API VIP handoff**<br>Ownership moved from server 02 to server 03 |
 
-### Latest released milestone · v0.8 API VIP
+### Latest released milestone · v0.9 Argo CD GitOps
 
-On September 19, 2026, I tested a controlled kube-vip leader-pod deletion while probing the Kubernetes API through its stable internal endpoint. VIP ownership moved to another server, the deleted pod was replaced, and all three nodes were Ready afterward. **No failed API probes were recorded**; a zero-downtime bound was not measured.
+I deployed Argo CD in the lab and registered WebDemo for human-reviewed synchronization. A controlled change from three to four replicas appeared as `OutOfSync`; after inspecting the affected resource, I manually reconciled the Deployment and confirmed `Synced`, `Healthy`, and 3/3 Ready replicas. The repository preserves baseline, drift, resource/event, and recovered-state evidence.
 
-**[Explore the architecture](https://github.com/Capasiter/homelab-portfolio#architecture)** · **[Read the failover evidence](https://github.com/Capasiter/homelab-portfolio/blob/main/ansible/docs/k3s-api-vip-validation.md)** · **[Browse releases](https://github.com/Capasiter/homelab-portfolio/releases)**
+**[Explore the architecture](https://github.com/Capasiter/homelab-portfolio#architecture)** · **[Read the GitOps evidence](https://github.com/Capasiter/homelab-portfolio/blob/main/kubernetes/argocd/README.md)** · **[View v0.9.0](https://github.com/Capasiter/homelab-portfolio/releases/tag/v0.9.0)**
 
-### Current lab work · Argo CD GitOps
+### Previous milestone · v0.8 Stable API endpoint
 
-On September 27, 2026, I installed Argo CD in the lab and registered WebDemo for manual synchronization. A controlled change from three to four replicas appeared as OutOfSync; after reviewing the diff, I manually reconciled the Deployment and confirmed Synced, Healthy, and 3/3 Ready replicas. This work is merged into `main`; **v0.9.0 has not been released**. [Read the configuration and validation record](https://github.com/Capasiter/homelab-portfolio/blob/main/kubernetes/argocd/README.md).
+I tested a controlled kube-vip leader-pod deletion while probing the Kubernetes API through its stable internal endpoint. VIP ownership moved to another server, the deleted pod was replaced, and all three nodes were Ready afterward. **No failed API probes were recorded**; a zero-downtime bound was not measured. [Read the failover evidence](https://github.com/Capasiter/homelab-portfolio/blob/main/ansible/docs/k3s-api-vip-validation.md).
 
 ### Engineering work behind the results
 
@@ -50,7 +50,7 @@ On September 27, 2026, I installed Argo CD in the lab and registered WebDemo for
 
 ## Building toward
 
-**Next:** Strengthen the Argo CD validation record for v0.9.0; shared application storage and volume-recovery validation.
+**Next:** Add shared application storage and validate volume recovery; complete the isolated etcd restore investigation.
 
 **Future:** human-supervised AI operations for log analysis, incident triage, and runbook assistance—starting in an isolated sandbox with reviewed, auditable changes.
 
