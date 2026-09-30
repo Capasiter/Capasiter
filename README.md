@@ -20,11 +20,15 @@ An isolated Kubernetes lab built with **Proxmox, OpenTofu, Ansible, K3s, and Git
 | **3 K3s server VMs**<br>Control plane + embedded etcd | **Prometheus + Grafana**<br>Cluster metrics and application probing | **148 successful HTTP requests**<br>0 observed failures during a protected rollout |
 | **Repeatable infrastructure**<br>OpenTofu provisioning + Ansible configuration | **Off-server backups**<br>Checksum verification, protected token, daily scheduling | **API VIP handoff**<br>Ownership moved from server 02 to server 03 |
 
-### Latest demonstrated capability · v0.8 API VIP
+### Latest released milestone · v0.8 API VIP
 
 On September 19, 2026, I tested a controlled kube-vip leader-pod deletion while probing the Kubernetes API through its stable internal endpoint. VIP ownership moved to another server, the deleted pod was replaced, and all three nodes were Ready afterward. **No failed API probes were recorded**; a zero-downtime bound was not measured.
 
 **[Explore the architecture](https://github.com/Capasiter/homelab-portfolio#architecture)** · **[Read the failover evidence](https://github.com/Capasiter/homelab-portfolio/blob/main/ansible/docs/k3s-api-vip-validation.md)** · **[Browse releases](https://github.com/Capasiter/homelab-portfolio/releases)**
+
+### Current lab work · Argo CD GitOps
+
+On September 27, 2026, I installed Argo CD in the lab and registered WebDemo for manual synchronization. A controlled change from three to four replicas appeared as OutOfSync; after reviewing the diff, I manually reconciled the Deployment and confirmed Synced, Healthy, and 3/3 Ready replicas. This work is merged into `main`; **v0.9.0 has not been released**. [Read the configuration and validation record](https://github.com/Capasiter/homelab-portfolio/blob/main/kubernetes/argocd/README.md).
 
 ### Engineering work behind the results
 
@@ -42,17 +46,17 @@ On September 19, 2026, I tested a controlled kube-vip leader-pod deletion while 
 | Infrastructure automation | Proxmox VE, OpenTofu, Ansible, cloud-init, OPNsense |
 | Kubernetes | K3s, embedded etcd, kube-vip, containerd, Traefik, Helm |
 | Observability | Prometheus, Grafana, Alertmanager, Blackbox Exporter, PromQL |
-| Engineering workflow | Git, GitHub Actions, validation records, versioned releases |
+| Engineering workflow | Git, GitHub Actions, Argo CD manual sync, validation records, versioned releases |
 
 ## Building toward
 
-**Next:** Argo CD application delivery with drift detection and controlled reconciliation; shared application storage and volume-recovery validation.
+**Next:** Strengthen the Argo CD validation record for v0.9.0; shared application storage and volume-recovery validation.
 
 **Future:** human-supervised AI operations for log analysis, incident triage, and runbook assistance—starting in an isolated sandbox with reviewed, auditable changes.
 
 **Learning:** AWS fundamentals and preparation for AWS Certified Cloud Practitioner (CLF-C02).
 
-These are planned or in-progress learning goals, not delivered capabilities or certifications.
+The Next and Future items are planned work; AWS certification is a learning goal, not a held credential.
 
 ## Connect
 
