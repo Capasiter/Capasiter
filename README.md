@@ -9,6 +9,10 @@ I'm an infrastructure-focused IT professional in Blaine, Minnesota, transitionin
 [![Portfolio](https://img.shields.io/badge/Explore-Homelab_Portfolio-2563EB?style=for-the-badge)](https://github.com/Capasiter/homelab-portfolio)
 [![LinkedIn](https://img.shields.io/badge/Connect-LinkedIn-0A66C2?style=for-the-badge)](https://www.linkedin.com/in/leeaustinmn/)
 
+## Resume
+
+[Download my Infrastructure Support Resume (PDF)](resume/Lee_Austin_Infrastructure_Support_Resume_2026.pdf)
+
 ## Featured project · Homelab Infrastructure Portfolio
 
 An isolated Kubernetes lab built with **Proxmox, OpenTofu, Ansible, K3s, Argo CD, and GitHub Actions**—with live monitoring, protected application rollouts, off-server backups, GitOps drift detection, and a validated internal API VIP.
