@@ -1,0 +1,3 @@
+
+# Treat resume PDFs as binary files
+resume/*.pdf binary
